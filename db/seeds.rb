@@ -7,10 +7,15 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 require 'faker'
+puts 'Start creating users'
+User.create(username: 'unu', role: 'delivery', password: '123456')
+
+puts 'DONE, customers...'
+
 Meal.destroy_all
 puts 'Start creating meals'
 25.times do
-  meal = Meal.new(name: Faker::Food.dish)
+  meal = Meal.new(name: Faker::Food.dish, )
   meal.save!
 end
 puts 'DONE, meals...'
