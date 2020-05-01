@@ -1,7 +1,5 @@
 <h1>Our customers</h1>
-<% current_user.manager %>
-<% raise %>
-<% if current_user.role == "manager" %>
+<% if current_user.manager(current_user) %>
 <%= link_to 'Add a new customer', new_customer_path  %> <br>
 <% end %>
 <% @customers.each do |customer| %>
