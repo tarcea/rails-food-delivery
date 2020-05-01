@@ -2,8 +2,6 @@
 
 one:
   name: MyString
-  order: one
 
 two:
   name: MyString
-  order: two

@@ -7,15 +7,11 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 require 'faker'
-puts 'Start creating users'
-User.create(username: 'unu', role: 'delivery', password: '123456')
-
-puts 'DONE, customers...'
 
 Meal.destroy_all
 puts 'Start creating meals'
 25.times do
-  meal = Meal.new(name: Faker::Food.dish, )
+  meal = Meal.new(name: Faker::Food.dish)
   meal.save!
 end
 puts 'DONE, meals...'
@@ -31,3 +27,15 @@ puts 'Start creating customers'
   customer.save!
 end
 puts 'DONE, customers...'
+User.destroy_all
+puts 'Start creating users'
+User.create!(email: 'unu@me.com', username: 'unu', role: 'delivery', password: '123456')
+User.create!(email: 'doi@me.com', username: 'doi', role: 'delivery', password: '123456')
+User.create!(email: 'trei@me.com', username: 'trei', role: 'manager', password: '123456')
+puts 'DONE, users...'
+Order.destroy_all
+puts 'Start creating orders'
+Order.create!(user: User.first, customer: Customer.first, meal: Meal.first)
+Order.create!(user: User.second, customer: Customer.fifth, meal: Meal.last)
+Order.create!(user: User.third, customer: Customer.last, meal: Meal.third)
+puts 'DONE, orders...'
