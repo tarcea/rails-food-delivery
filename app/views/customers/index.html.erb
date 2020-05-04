@@ -1,7 +1,11 @@
-<h1>Our customers</h1>
+<h1>Our customers (<%= @customers.length %>)</h1>
 <% if current_user.manager(current_user) %>
 <%= link_to 'Add a new customer', new_customer_path  %> <br>
 <% end %>
 <% @customers.each do |customer| %>
-<%= customer.name %> | <%= customer.address %> | <%= customer.phone %> | <br>
+<p><%= customer.name %> | <%= customer.address %> | <%= customer.phone %> |
+<% if current_user.manager(current_user) %>
+<%= link_to '<i class="fas fa-trash icons"></i>'.html_safe, "customers/#{customer.id}", method: :delete, data: { confirm: 'Are you sure, dude?' }, class: "trash-right" %>
 <% end %>
+<% end %>
+</p>

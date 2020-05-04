@@ -1,5 +1,5 @@
 class CustomersController < ApplicationController
-
+  attr_reader :customers
   def index
     @customers = Customer.all
   end
@@ -15,6 +15,12 @@ class CustomersController < ApplicationController
     else
       render :new
     end
+  end
+
+  def destroy
+    @customer = Customer.find(params[:id])
+    @customer.destroy
+    redirect_to customers_path
   end
 
   private

@@ -1,0 +1,13 @@
+<% if current_user.manager(current_user) %>
+  <h1>All Employees (<%= User.all.length %>)</h1>
+  <% User.all.each do |user| %>
+  <%= user.username %> | <%= user.email %> | <%= user.role %> | <%=link_to "Orders", orders_path%><br>
+  <% end %>
+<% else %>
+  <h1>My infos</h1>
+  <%= current_user.username %> | <%= current_user.email %> | <%= current_user.role %>
+  <h1>My orders</h1>
+  <% @orders.each do |order| %>
+  <%= order.customer.name %> | <%= order.meal.name %><br>
+  <% end %>
+<% end %>
