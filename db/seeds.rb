@@ -35,9 +35,9 @@ User.create!(email: 'trei@me.com', username: 'trei', role: 'manager', password: 
 puts 'DONE, users...'
 Order.destroy_all
 puts 'Start creating orders'
-Order.create!(user: User.first, customer: Customer.first, meal: Meal.first)
-Order.create!(user: User.first, customer: Customer.third, meal: Meal.second)
-Order.create!(user: User.second, customer: Customer.fifth, meal: Meal.last)
-Order.create!(user: User.second, customer: Customer.second, meal: Meal.first)
-Order.create!(user: User.third, customer: Customer.last, meal: Meal.third)
+Order.create!(user: User.first, customer: Customer.first, meal: Meal.first, delivered: true)
+Order.create!(user: User.first, customer: Customer.third, meal: Meal.second, delivered: false)
+Order.create!(user: User.second, customer: Customer.fifth, meal: Meal.last, delivered: false)
+Order.create!(user: User.second, customer: Customer.second, meal: Meal.first, delivered: false)
+Order.create!(user: User.third, customer: Customer.last, meal: Meal.third, delivered: false)
 puts 'DONE, orders...'
